@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="University.App.Views.Forms.PQRSPage"
+             BackgroundColor="{DynamicResource Gray-200}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView BindingContext="{Binding PQRS}">
+            <StackLayout Margin="20,32"
+                         Spacing="0"
+                         VerticalOptions="FillAndExpand">
+
+                <Grid RowSpacing="10"
+                      VerticalOptions="CenterAndExpand">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Text="Type of request"
+                           FontSize="20"
+                           HorizontalTextAlignment="Center"
+                           Style="{StaticResource LabelStyle}"
+                           TextColor="{DynamicResource Gray-900}"/>
+
+                    <Picker Grid.Row="1"
+                            HorizontalOptions="FillAndExpand"                            
+                            Title="Select type of request"
+                            
+                            BackgroundColor="Transparent"
+                            ItemsSource="{Binding TypeRequests}"
+                            ItemDisplayBinding="{Binding Name}"/>
+
+                    <Button Grid.Row="2"
+                            Margin="0,16"
+                            Text="Send"
+                            Style="{StaticResource ButtonStyle}"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

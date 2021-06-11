@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="University.App.Views.Forms.RegisterPage"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:control="clr-namespace:University.App.Controls"
+             BackgroundColor="{DynamicResource Gray-200}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView BindingContext="{Binding Register}">
+            <StackLayout Margin="20,32"
+                         Spacing="0"
+                         VerticalOptions="FillAndExpand">
+
+                <Image HeightRequest="250"                       
+                       Source="logo_complete"/>
+
+                <Grid RowSpacing="10"
+                      VerticalOptions="CenterAndExpand">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Text="University"
+                           FontSize="20"
+                           HorizontalTextAlignment="Center"
+                           Style="{StaticResource LabelStyle}"
+                           TextColor="{DynamicResource Gray-900}"/>
+
+                    <Label Grid.Row="1"
+                           Margin="0,8"
+                           HorizontalTextAlignment="Center"
+                           Text="Inicie sesión o regístrese desde aquí para acceder."
+                           Style="{StaticResource LabelStyle}"
+                           TextColor="{DynamicResource Gray-800}"/>
+
+                    <!--<Entry Grid.Row="2"
+                           Placeholder="Username"
+                           Keyboard="Email"/>-->
+
+                    <control:BorderlessEntry Grid.Row="2"
+                                             Placeholder="Username"
+                                             Keyboard="Email"
+                                             PlaceholderColor="{DynamicResource Gray-700}"
+                                             TextColor="{DynamicResource Gray-900}"
+                                             Style="{StaticResource EntryStyle}"
+                                             Text="{Binding Email}"/>
+               
+                    <!--<Entry Grid.Row="3"
+                           Placeholder="Password"
+                           IsPassword="True" />-->
+
+                    <control:BorderlessEntry Grid.Row="3"
+                                             Placeholder="Password"
+                                             IsPassword="True"
+                                             PlaceholderColor="{DynamicResource Gray-700}"
+                                             TextColor="{DynamicResource Gray-900}"
+                                             Style="{StaticResource EntryStyle}"
+                                             Text="{Binding Password}"/>
+                    <control:BorderlessEntry Grid.Row="4"
+                                             Placeholder="Password Confirm"
+                                             IsPassword="True"
+                                             PlaceholderColor="{DynamicResource Gray-700}"
+                                             TextColor="{DynamicResource Gray-900}"
+                                             Style="{StaticResource EntryStyle}"
+                                             Text="{Binding ConfirmPassword}"/>
+
+                    <Button Grid.Row="5"
+                            Margin="0,16"
+                            Text="Login"
+                            Style="{StaticResource ButtonStyle}"
+                            Command="{Binding RegisterCommand}"
+                            IsEnabled="{Binding IsEnabled}"/>
+
+                </Grid>
+
+                <ActivityIndicator VerticalOptions="Center"
+                                   IsRunning="{Binding IsRunning}"/>
+
+                <Label HeightRequest="46"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       Text="Log In"
+                       Style="{StaticResource LabelStyle}"
+                       TextColor="{DynamicResource Gray-800}"
+                       TextDecorations="Underline">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LoginCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Label HeightRequest="46"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       Text="Copyright © 2021. All rights reserved." />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
